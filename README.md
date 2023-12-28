@@ -15,15 +15,15 @@ Analytical Tools: Scripts, functions, and software tools developed for econometr
 
 Educational Resources: This includes course materials, lectures, and tutorials on econometrics, financial modeling, and related subjects. These resources are particularly beneficial for students and those new to the field.
 
-## Contributions:
+## Contributions
 
 Contributions to this repository are highly encouraged. Scholars, researchers, and students are invited to contribute their work, be it in the form of models, datasets, tools, or scholarly articles. Contributions should adhere to the highest academic standards and be relevant to the field of econometrics.
 
-## Usage and Citation:
+## Usage and Citation
 
 Materials within this repository are available for academic and research purposes. Users are requested to appropriately cite any resources utilized from this repository in their academic and professional work.
 
-## Contact and Collaboration:
+## Contact and Collaboration
 
 For collaboration, questions, or discussions related to econometric research, please contact the repository maintainer. We welcome diverse perspectives and constructive dialogues that enhance the field of econometrics.
 
