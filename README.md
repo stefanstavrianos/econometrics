@@ -12,8 +12,7 @@
 
 <p>Here's how to use the main functions in the package:</p>
 
-<pre><code>
-from econometrics import correlation
+<pre><code>from econometrics import correlation
 
 # Example: Using the correlation function
 correlation(your_dataframe, method="Pearson", p="T")
@@ -51,5 +50,5 @@ correlation(your_dataframe, method="Pearson", p="T")
 
 <h2>Contact</h2>
 
-<p>For questions or support, please contact [Your Contact Information].</p>
+<p>For questions or support, please contact contact@stefanstavrianos.eu.</p>
 
