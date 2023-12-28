@@ -50,5 +50,5 @@ correlation(your_dataframe, method="Pearson", p="T")
 
 <h2>Contact</h2>
 
-<p>For questions or support, please contact contact@stefanstavrianos.eu.</p>
+<p>For questions or support, please contact </p><a href="mailto:contact@stefanstavrianos.eu">contact@stefanstavrianos.eu</a>
 
