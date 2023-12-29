@@ -1,25 +1,25 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='econometrics',  # Name of your package
-    version='0.1',  # Initial version of your package
-    packages=find_packages(),  # Automatically find all packages in the directory
-    description='Advanced Econometric Analysis Tools',  # Short description
-    long_description=open('README.md').read(),  # Long description from README
-    long_description_content_type='text/markdown',  # Specify the format of the long description
-    author='Stefanos Stavrianos',  # Your name or the organization's name
-    author_email='contact@stefanstavrianos.eu',  # Your email or the organization's email
-    url='https://github.com/stefanstavrianos/econometrics/',  # Link to the project's GitHub repo
+    name='econkit',  # Ensure this matches with your PyPI package name
+    version='0.0.1',
+    packages=find_packages(),
+    description='Advanced Econometric Analysis Tools',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    author='Stefanos Stavrianos',
+    author_email='contact@stefanstavrianos.eu',  # Verify this email
+    url='https://github.com/stefanstavrianos/econkit',  # Replace with your actual URL
     install_requires=[
         'numpy',
         'pandas',
         'scipy'
-    ],  # List of dependencies to be installed with your package
-    python_requires='>=3.6',  # Minimum version of Python required
+    ],
+    python_requires='>=3.6',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: BSD 3-Clause License',  # Correct the license here
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
@@ -30,7 +30,5 @@ setup(
         'Intended Audience :: Science/Research',
         'Topic :: Office/Business :: Financial',
         'Topic :: Scientific/Engineering :: Information Analysis',
-        'Topic :: Scientific/Engineering :: Economics',  # Adding econometrics under this category
-    ],  # Classifiers give users a clear idea of the package's intended use, audience, and stability
+    ]
 )
-
