@@ -1,21 +1,20 @@
-<h1>Econometrics Package</h1>
+<h1>EconKit Package</h1>
 
-<p>This is a detailed description of the Econometrics package. It provides advanced tools and functions for econometric analysis, tailored to the needs of researchers, students, and professionals in economics and finance.</p>
+<p>This is a detailed description of the EconKit package. It provides advanced tools and functions for econometric analysis, tailored to the needs of researchers, students, and professionals in economics and finance.</p>
 
 <h2>Installation</h2>
 
-<p>To install the Econometrics package, run the following command:</p>
+<p>To install the EconKit package, run the following command:</p>
 
-<pre><code>pip install econometrics</code></pre>
+<pre><code>pip install econkit</code></pre>
 
 <h2>Usage</h2>
 
 <p>Here's how to use the main functions in the package:</p>
 
-<pre><code>from econometrics import correlation
+<pre><code>from econkit import correlation
 
-# Example: Using the correlation function
-correlation(your_dataframe, method="Pearson", p="T")
+correlation(dataframe, method="Pearson", p="T")
 </code></pre>
 
 <h2>Features</h2>
@@ -38,7 +37,7 @@ correlation(your_dataframe, method="Pearson", p="T")
 
 <h2>Contributing</h2>
 
-<p>We welcome contributions to the Econometrics package. Please read the contributing guidelines before submitting your pull requests.</p>
+<p>We welcome contributions to the EconKit package. Please read the contributing guidelines before submitting your pull requests.</p>
 
 <h2>License</h2>
 
@@ -50,5 +49,4 @@ correlation(your_dataframe, method="Pearson", p="T")
 
 <h2>Contact</h2>
 
-<p>For questions or support, please contact <a href="mailto:contact@stefanstavrianos.eu">contact@stefanstavrianos.eu</a></p>
-
+<p>For questions or support, please contact <a href="mailto:contact@stfanstavrianos.eu">contact@stfanstavrianos.eu</a>.</p>
