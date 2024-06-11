@@ -1,25 +1,32 @@
 from setuptools import setup, find_packages
+from econkit.version import __version__
 
 setup(
-    name='econkit',  # Ensure this matches with your PyPI package name
-    version='0.0.1',
+    name='econkit',
+    version=__version__,
     packages=find_packages(),
     description='Advanced Econometric Analysis Tools',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
+    license='MIT',
     author='Stefanos Stavrianos',
-    author_email='contact@stefanstavrianos.eu',  # Verify this email
-    url='https://github.com/stefanstavrianos/econkit',  # Replace with your actual URL
+    author_email='contact@stefanstavrianos.eu',
+    url='https://www.stefanstavrianos.eu/',
     install_requires=[
         'numpy',
         'pandas',
-        'scipy'
+        'scipy',
+        'statsmodels',
+        'yfinance',
+        'requests',
+        'matplotlib',
+        'plotly'
     ],
     python_requires='>=3.6',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: BSD 3-Clause License',  # Correct the license here
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
@@ -30,5 +37,5 @@ setup(
         'Intended Audience :: Science/Research',
         'Topic :: Office/Business :: Financial',
         'Topic :: Scientific/Engineering :: Information Analysis',
-    ]
+    ],
 )
