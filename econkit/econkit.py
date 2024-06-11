@@ -3,7 +3,7 @@ import numpy as np
 from scipy.stats import kurtosis, spearmanr, pearsonr, kendalltau
 from statsmodels.tsa.stattools import adfuller
 
-# Finance
+
 import yfinance as yf
 from datetime import datetime
 import os
@@ -90,7 +90,7 @@ class econometrics:
         elif method == "Spearman":
             print("\n" + "=" * 27 + f"\n {method} Rank Correlation\n" + "=" * 27)
         elif method == "Kendall":
-            print("\n" + "=" * 26 + f"\n {method} Rank Correlation\n" + "=" * 26)
+            print("\n" + "=" * 25 + f"\n {method} Tau Correlation\n" + "=" * 25)
 
         corr_matrix = pd.DataFrame(index=numeric_df.columns, columns=numeric_df.columns)
         pmatrix = pd.DataFrame(index=numeric_df.columns, columns=numeric_df.columns)
