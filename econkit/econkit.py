@@ -38,18 +38,18 @@ class econometrics:
                 p_value = jb_test[1]
 
                 statistics_values = [
-                    round(column_data.mean(), 4), 
-                    round(column_data.median(), 4),
-                    round(column_data.min(), 4), 
-                    round(column_data.max(), 4), 
-                    round(column_data.std(), 4), 
-                    round((np.percentile(column_data, 75) - np.percentile(column_data, 25)) / 2, 4),
-                    round(kurtosis(column_data, fisher=True, nan_policy='omit'), 4),
-                    round(kurtosis(column_data, fisher=False, nan_policy='omit'), 4),
+                    round(column_data.mean(), 3), 
+                    round(column_data.median(), 3),
+                    round(column_data.min(), 3), 
+                    round(column_data.max(), 3), 
+                    round(column_data.std(), 3), 
+                    round((np.percentile(column_data, 75) - np.percentile(column_data, 25)) / 2, 3),
+                    round(kurtosis(column_data, fisher=True, nan_policy='omit'), 3),
+                    round(kurtosis(column_data, fisher=False, nan_policy='omit'), 3),
                     round(column_data.skew(), 4),
-                    round((np.percentile(column_data, 75) - np.percentile(column_data, 25)) / 2 / column_data.median(), 4) if column_data.median() != 0 else 0,
-                    round(jb_value, 4),
-                    format(p_value, '.4f')
+                    round((np.percentile(column_data, 75) - np.percentile(column_data, 25)) / 2 / column_data.median(), 3) if column_data.median() != 0 else 0,
+                    round(jb_value, 3),
+                    format(p_value, '.3f')[1:] if p_value < 1 else format(p_value, '.3f')
                 ]
 
                 descriptive_df[name] = statistics_values
@@ -215,11 +215,11 @@ class econometrics:
                 print(f"ADF test failed for series: {series.name}, error: {e}")
                 return {
                     'ADF Stat.': np.nan,
-                    'Signif. Level': np.nan,
-                    'P-Value': np.nan,
+                    'Signif. Level': np.nan,     
                     'Number of Lags Used': np.nan,
                     'Number of Observations': np.nan,
                     'Information Criterion': np.nan,
+                    'P-Value': np.nan,
                     'critical value 1%': np.nan,
                     'critical value 5%': np.nan,
                     'critical value 10%': np.nan
@@ -340,9 +340,9 @@ class econometrics:
                 print(f"KPSS test failed for series: {series.name}, error: {e}")
                 return {
                     'KPSS Stat.': np.nan,
-                    'Signif. Level': np.nan,
-                    'P-Value': np.nan,
+                    'Signif. Level': np.nan,                    
                     'Number of Lags Used': np.nan,
+                    'P-Value': np.nan,
                     'critical value 1%': np.nan,
                     'critical value 5%': np.nan,
                     'critical value 10%': np.nan
@@ -370,7 +370,7 @@ class econometrics:
             summary = {
                 'KPSS Stat.': kpss_stat,
                 'Signif. Level': signif_code,
-                'P-Value': format(p_value, '.3f') if isinstance(p_value, float) else p_value,
+                'P-Value': format(p_value, '.3f')[1:] if p_value < 1 else format(p_value, '.3f'),
                 'Number of Lags Used': lags_used,
                 'critical value 1%': round(critical_values['1%'], 3),
                 'critical value 5%': round(critical_values['5%'], 3),

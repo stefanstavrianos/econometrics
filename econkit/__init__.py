@@ -18,7 +18,6 @@ def check_and_install_libraries():
     def check_and_install(package):
         try:
             importlib.import_module(package)
-            print(f"{package} is already installed.")
         except ImportError:
             print(f"{package} is not installed.")
             response = input(f"Do you want to install {package}? (yes/no): ").strip().lower()
