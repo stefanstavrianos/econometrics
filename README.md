@@ -27,10 +27,10 @@ Computes descriptive statistics for each numeric column in a DataFrame.
 **Example Usage:**
 ```python
 import pandas as pd
-from econkit import econometrics
+from econkit import econometrics as ec
 
 df = pd.read_csv('your_data.csv')
-econometrics.descriptives(df)
+ec.descriptives(df)
 ```
 
 ### Correlation Matrix
@@ -50,10 +50,10 @@ Calculates and prints the correlation matrix and p-values for numeric columns in
 **Example Usage:**
 ```python
 import pandas as pd
-from econkit import econometrics
+from econkit import econometrics as ec
 
 df = pd.read_csv('your_data.csv')
-econometrics.correlation(df, method='Spearman', p=True)
+ec.correlation(df, method='Spearman', p=True)
 ```
 
 ### Augmented Dickey-Fuller (ADF) Test
@@ -75,10 +75,10 @@ Performs the ADF test on each column in the DataFrame and returns a summary tabl
 **Example Usage:**
 ```python
 import pandas as pd
-from econkit import econometrics
+from econkit import econometrics as ec
 
 df = pd.read_csv('your_data.csv')
-econometrics.adf(df, regression='ct', autolag='BIC')
+ec.adf(df, regression='ct', autolag='BIC')
 ```
 
 ### KPSS Test
@@ -99,10 +99,10 @@ Performs the KPSS test on each column in the DataFrame and returns a summary tab
 **Example Usage:**
 ```python
 import pandas as pd
-from econkit import econometrics
+from econkit import econometrics as ec
 
 df = pd.read_csv('your_data.csv')
-econometrics.kpss(df, regression='ct', nlags='auto')
+ec.kpss(df, regression='ct', nlags='auto')
 ```
 
 ### Durbin-Watson Test
@@ -120,17 +120,17 @@ Performs the Durbin-Watson autocorrelation test and Ljung-Box test for each colu
 **Example Usage:**
 ```python
 import pandas as pd
-from econkit import econometrics
+from econkit import econometrics as ec
 
 df = pd.read_csv('your_data.csv')
-econometrics.dw(df)
+ec.dw(df)
 ```
 
 ### Financial Data Retrieval
 
 #### `data(ticker_symbol, start_date, end_date, interval)`
 
-Downloads stock data from Yahoo Finance and calculates daily returns.
+Downloads financial data from Yahoo Finance and calculates daily returns.
 
 **Parameters:**
 - `ticker_symbol`: `str`. The stock ticker symbol.
@@ -143,10 +143,15 @@ Downloads stock data from Yahoo Finance and calculates daily returns.
 
 **Example Usage:**
 ```python
-from econkit import finance
+from econkit import finance as f
 
-data = finance.data('AAPL', '01-01-2020', '31-12-2020', '1d')
-print(data)
+start = '01-06-2024'
+end = '07-06-2024'
+int = '1m'
+
+SP500 = f.data('^GSPC', start, end, int)
+
+SP500.head()
 ```
 
 ## Usage Notes
