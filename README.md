@@ -1,5 +1,5 @@
 
-# econkit
+# EconKit
 
 `econkit` is a Python library that provides various statistical and econometric analysis tools, including descriptive statistics, correlation matrices, and tests for stationarity and autocorrelation.
 
