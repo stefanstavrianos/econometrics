@@ -83,7 +83,7 @@ econometrics.adf(df, regression='ct', autolag='BIC')
 
 ### KPSS Test
 
-#### `kpss_test(dataframe, regression='c', nlags='auto', handle_na='drop')`
+#### `kpss(dataframe, regression='c', nlags='auto', handle_na='drop')`
 
 Performs the KPSS test on each column in the DataFrame and returns a summary table.
 
@@ -102,7 +102,7 @@ import pandas as pd
 from econkit import econometrics
 
 df = pd.read_csv('your_data.csv')
-econometrics.kpss_test(df, regression='ct', nlags='auto')
+econometrics.kpss(df, regression='ct', nlags='auto')
 ```
 
 ### Durbin-Watson Test

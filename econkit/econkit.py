@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from scipy.stats import kurtosis, skew, jarque_bera, spearmanr, pearsonr, kendalltau
-from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.stattools import adfuller, kpss
 import statsmodels.api as sm
 from statsmodels.stats.diagnostic import acorr_ljungbox
 from statsmodels.stats.stattools import durbin_watson
@@ -156,8 +156,8 @@ class econometrics:
         Perform Augmented Dickey-Fuller (ADF) test on each column in the DataFrame and return a summary table.
 
         Parameters:
-        dataframe: pandas.DataFrame
-            The DataFrame containing time series data to be tested.
+        dataframe: pandas.DataFrame or pandas.Series
+            The DataFrame or Series containing time series data to be tested.
         maxlag: int, optional
             Maximum number of lags to use. Default is None, which means the lag length is automatically determined.
         regression: str {'c', 'ct', 'ctt', 'nc'}, optional
@@ -247,10 +247,10 @@ class econometrics:
             summary = {
                 'ADF Stat.': adf_stat,
                 'Signif. Level': signif_code,
+                'P-Value': format(p_value, '.3f')[1:] if p_value < 1 else format(p_value, '.3f'),
                 'Number of Lags Used': used_lag,
                 'Number of Observations': n_obs,
-                'Information Criterion': ic_best,
-                'P-Value': format(p_value, '.3f')[1:] if p_value < 1 else format(p_value, '.3f')
+                'Information Criterion': ic_best
             }
 
             # Adding critical values to the summary
@@ -258,6 +258,10 @@ class econometrics:
                 summary[f'critical value {key}'] = round(value, 3)
 
             return summary
+
+        if isinstance(dataframe, pd.Series):
+            # If the input is a Series, convert it to a DataFrame with one column
+            dataframe = dataframe.to_frame(name=dataframe.name)
 
         # Apply the ADF test to each column in the DataFrame
         adf_results = dataframe.apply(adf_test)
@@ -272,14 +276,16 @@ class econometrics:
         print(tabulate(results_df, headers='keys', tablefmt='pretty', showindex=True))
         print("\n--\n" + "Signif. codes:  0.001 '***', 0.01 '**', 0.05 '*', 0.1 '.'\n")
 
+
+
     @staticmethod
-    def kpss_test(dataframe, regression='c', nlags='auto', handle_na='drop'):
+    def kpss(dataframe, regression='c', nlags='auto', handle_na='drop'):
         """
-        Perform KPSS test on each column in the DataFrame and return a summary table.
+        Perform Kwiatkowski-Phillips-Schmidt-Shin test on each column in the DataFrame and return a summary table.
 
         Parameters:
-        dataframe: pandas.DataFrame
-            The DataFrame containing time series data to be tested.
+        dataframe: pandas.DataFrame or pandas.Series
+            The DataFrame or Series containing time series data to be tested.
         regression: str {'c', 'ct'}, optional
             Type of regression trend. Default is 'c' for constant only.
             'c' : constant only (default)
@@ -373,6 +379,10 @@ class econometrics:
 
             return summary
 
+        if isinstance(dataframe, pd.Series):
+            # If the input is a Series, convert it to a DataFrame with one column
+            dataframe = dataframe.to_frame()
+
         # Apply the KPSS test to each column in the DataFrame
         kpss_results = dataframe.apply(kpss_test)
 
@@ -382,7 +392,7 @@ class econometrics:
         # Create the result DataFrame
         results_df = pd.DataFrame(result_dict)
 
-        print("=" * (len("KPSS Test") + 2) + "\n" + " KPSS Test" + "\n" + "=" * (len("KPSS Test") + 2) + "\n")
+        print("=" * (len("Kwiatkowski-Phillips-Schmidt-Shin Test") + 2) + "\n" + " Kwiatkowski-Phillips-Schmidt-Shin Test" + "\n" + "=" * (len("Kwiatkowski-Phillips-Schmidt-Shin Test") + 2) + "\n")
         print(tabulate(results_df, headers='keys', tablefmt='pretty', showindex=True))
         print("\n--\n" + "Signif. codes:  0.001 '***', 0.01 '**', 0.05 '*', 0.1 '.'\n")
 

@@ -1,20 +1,20 @@
 # __init__.py
 
-# Import Version
-from .version import __version__
-
-# Import Other Modules
-from .econkit import econometrics, finance
-
-# Version Check and Update Function
+# Import required standard libraries
 import subprocess
 import sys
-import requests
 import importlib
 import os
 from distutils.version import LooseVersion
+import requests
 
-def check_and_install_libraries(requirements_path='requirements.txt'):
+# Version Check and Update Function
+def check_and_install_libraries():
+    required_packages = [
+        'pandas', 'numpy', 'scipy', 'statsmodels', 
+        'yfinance', 'requests', 'tabulate', 'warnings'
+    ]
+    
     def check_and_install(package):
         try:
             importlib.import_module(package)
@@ -28,20 +28,12 @@ def check_and_install_libraries(requirements_path='requirements.txt'):
             else:
                 print(f"{package} is required for this library to work properly.")
 
-    if not os.path.exists(requirements_path):
-        print(f"requirements.txt file not found at {requirements_path}")
-        return
-
-    with open(requirements_path, 'r') as file:
-        lines = file.readlines()
-    
-    required_packages = [line.strip().split('==')[0] for line in lines if line.strip() and not line.startswith('#')]
-    
     for package in required_packages:
         check_and_install(package)
 
 def check_for_latest_version():
     try:
+        from .version import __version__
         current_version = __version__
         response = requests.get('https://pypi.org/pypi/econkit/json')
         latest_version = response.json()['info']['version']
@@ -57,6 +49,12 @@ def check_for_latest_version():
 
 # Check and install required libraries
 check_and_install_libraries()
+
+# Import Version
+from .version import __version__
+
+# Import Other Modules
+from .econkit import econometrics, finance
 
 # Initialize the version check at the end of the file
 check_for_latest_version()
