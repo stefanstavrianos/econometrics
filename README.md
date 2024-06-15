@@ -7,7 +7,7 @@
 
 Ensure you have the required packages installed:
 ```bash
-pip install pandas numpy scipy statsmodels tabulate yfinance
+pip install pandas numpy scipy statsmodels tabulate yfinance pandas requests tabulate warnings
 ```
 
 ## Functions
